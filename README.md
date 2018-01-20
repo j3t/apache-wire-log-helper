@@ -56,13 +56,13 @@ And from that, the relevant part is the line start with `[0x1f][0x8b]`. That's t
 [0x1f][0x8b][0x8][0x0][0x0][0x0][0x0][0x0][0x0][0x3][0xb3])J-.[0xc8][0xcf]+N[0xb5][0xe3][0xb2][0x81]1[0xe3][0x93][0xf3]S[0x80][0xfc][0xe0][0xd2][0xe4][0xe4][0xd4][0xe2]b.[0x1b]}4[0x9][0x84][0x80][0x1d][0x17][0x0]<Xn]@[0x0][0x0][0x0][\r][\n]
 ````
 
-Decoded and gunzipped ...
+Decoded, gunzipped and printed out ...
 ````
 String gzipped = ApacheWireLogHelper.decodeMessage("[0x1f][0x8b] ...");
-byte[] gzippedBytes = gzipped.getBytes("ISO-8859-15");
 
-InputStream is = new GZIPInputStream(new ByteArrayInputStream(gzippedBytes))
+InputStream is = new GZIPInputStream(new ByteArrayInputStream(gzipped.getBytes("ISO-8859-15")))
 BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
 reader.lines().forEach(System.out::println);
 ````
 
