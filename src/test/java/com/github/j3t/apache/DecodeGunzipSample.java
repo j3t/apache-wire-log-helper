@@ -19,13 +19,13 @@ public class DecodeGunzipSample {
 
         // read gzipped encoded content into a string
         InputStream is = DecodeGunzipSample.class.getResourceAsStream("/content.gzip");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         String content = reader.lines().collect(Collectors.joining());
         reader.close();
 
         // decode content
         String encodedContent = ApacheWireLogHelper.decodeMessage(content);
-        byte[] bytes = encodedContent.getBytes("ISO-8859-15");
+        byte[] bytes = encodedContent.getBytes("ISO-8859-1");
 
         // print out decoded gunzipped content
         reader = new BufferedReader(new InputStreamReader(new GZIPInputStream(new ByteArrayInputStream(bytes))));
