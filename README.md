@@ -1,9 +1,5 @@
 # apache-wire-log-helper
-Collection of methods that helps with ApacheHttpClient wire log.
-
-## Why you need this?
-You need that if you want to recover a gzipped message from [ApacheHttpClient](https://hc.apache.org) log that was send 
-or received.
+Tool to decrypt [ApacheHttpClient](https://hc.apache.org) logs which contain gzipped messages.
 
 ## How is this different to a normal log message?
 In wire logs, character 10 is replaced with `[\n]`, character 13 with `[\r]` and characters < 32 and > 127 with 
@@ -11,7 +7,7 @@ In wire logs, character 10 is replaced with `[\n]`, character 13 with `[\r]` and
 [org.apache.hc.client5.http.impl.logging.Wire](http://svn.apache.org/viewvc/httpcomponents/httpclient/trunk/httpclient5/src/main/java/org/apache/hc/client5/http/impl/logging/Wire.java?view=markup#l46) for more details).
 
 ## How it works?
-Your log file looks like this
+Your log file looks like the following
 ```
 [Jan 04 2015 05:38:14.109 AM] DEBUG wire:72 - http-outgoing-2 >> "POST /app HTTP/1.1[\r][\n]"
 [Jan 04 2015 05:38:14.109 AM] DEBUG wire:72 - http-outgoing-2 >> "User-Agent: Mozilla/5.0[\r][\n]"
